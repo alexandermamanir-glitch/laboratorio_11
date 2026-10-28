@@ -1,0 +1,39 @@
+body { 
+    font-family: "Times New Roman"; 
+    text-align: center; 
+    color: #b5b5b5; 
+    margin: 0; 
+  }
+  
+  h4 { 
+    font-size: 12px; 
+  }
+  
+  p { 
+    font-size: 11px; 
+    margin: 0; 
+  }
+  
+  input, select { 
+    border: none; 
+    border-bottom: 1px solid #eeeeee; 
+    margin: 0; 
+  }
+  
+  button { 
+    font-size: 9px; 
+    padding: 1px 3px; 
+    background: #ddd; 
+    color: #fff; 
+    border: none; 
+  }
+  
+  a { 
+    color: #ee0000; /* Color azul de enlace normal en vez de rojo */
+    font-size: 14px; 
+    font-weight: normal; 
+  }
+  
+  *:focus { 
+    outline: none; 
+  }
