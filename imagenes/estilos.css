@@ -1,39 +1,182 @@
-body { 
-    font-family: "Times New Roman"; 
-    text-align: center; 
-    color: #b5b5b5; 
-    margin: 0; 
+/* Variables de color y tipografía (WCAG Compliant) */
+:root {
+    --color-primario: #1a56db;
+    --color-primario-hover: #1e429f;
+    --color-texto: #111827;
+    --color-subtexto: #4b5563;
+    --color-fondo: #f3f4f6;
+    --color-tarjeta: #ffffff;
+    --color-borde: #d1d5db;
+    --color-error: #e02424;
+    --color-exito: #03543f;
+    --color-exito-fondo: #def7ec;
+    --color-info: #1e429f;
+    --color-info-fondo: #e1effe;
   }
   
-  h4 { 
-    font-size: 12px; 
+  /* Reset y base global */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
   
-  p { 
-    font-size: 11px; 
-    margin: 0; 
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
   }
   
-  input, select { 
-    border: none; 
-    border-bottom: 1px solid #eeeeee; 
-    margin: 0; 
+  /* Tarjeta contenedora centrada (Proximidad y Jerarquía) */
+  .tarjeta {
+    background-color: var(--color-tarjeta);
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    max-width: 500px;
+    width: 100%;
   }
   
-  button { 
-    font-size: 9px; 
-    padding: 1px 3px; 
-    background: #ddd; 
-    color: #fff; 
-    border: none; 
+  .tarjeta img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
   }
   
-  a { 
-    color: #ee0000; /* Color azul de enlace normal en vez de rojo */
-    font-size: 14px; 
-    font-weight: normal; 
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--color-texto);
   }
   
-  *:focus { 
-    outline: none; 
+  .ayuda {
+    font-size: 14px;
+    color: var(--color-subtexto);
+    margin-bottom: 24px;
+  }
+  
+  /* Fieldset y agrupamiento visual (Ley de Miller) */
+  fieldset {
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+  
+  legend {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0 8px;
+    color: var(--color-primario);
+  }
+  
+  /* Formulario e Inputs (Accesibilidad y Fitts) */
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    margin-top: 12px;
+  }
+  
+  label:first-of-type {
+    margin-top: 0;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 12px; /* Ley de Fitts: Blanco al blanco táctil amplio */
+    font-size: 15px;
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+    background-color: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  
+  /* Indicador de Enfoque Visible (WCAG 2.4.7) */
+  input:focus, select:focus, button:focus {
+    outline: 3px solid #a4cafe;
+    border-color: var(--color-primario);
+  }
+  
+  /* Botones (Ley de Fitts y Jerarquía Visual) */
+  .acciones {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 14px; /* Ley de Fitts: Altura táctil cómoda (>= 48px) */
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+  }
+  
+  .boton-principal {
+    background-color: var(--color-primario);
+    color: #ffffff;
+    border: none;
+  }
+  
+  .boton-principal:hover {
+    background-color: var(--color-primario-hover);
+  }
+  
+  .boton-secundario {
+    background-color: transparent;
+    color: var(--color-subtexto);
+    border: 1px solid var(--color-borde);
+  }
+  
+  .boton-secundario:hover {
+    background-color: #f9fafb;
+    color: var(--color-texto);
+  }
+  
+  /* Mensajes de Estado */
+  .mensaje {
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    display: none;
+  }
+  
+  .mensaje:not(:empty) {
+    display: block;
+  }
+  
+  .mensaje.error {
+    background-color: #fde8e8;
+    color: var(--color-error);
+  }
+  
+  .mensaje.exito {
+    background-color: var(--color-exito-fondo);
+    color: var(--color-exito);
+  }
+  
+  .mensaje.info {
+    background-color: var(--color-info-fondo);
+    color: var(--color-info);
+  }
+  
+  /* Validación de error en tiempo real */
+  .validado input:invalid, .validado select:invalid {
+    border-color: var(--color-error);
   }
